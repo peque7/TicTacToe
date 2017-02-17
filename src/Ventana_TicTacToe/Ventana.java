@@ -125,14 +125,47 @@ public class Ventana extends javax.swing.JFrame implements  ActionListener{
             for (int j = 0; j < 3; j++) {
                 if (e.getSource() ==  TABLERO[i][j].A){
                     Tiro(TABLERO[i][j]);
-                   /* if (Revisar()) {
+                    if (Revisar()) {
                         JOptionPane.showMessageDialog(null, "HAS GANADO");
-                    }*/
+                    }
                     Contador++;
                    //System.out.println("Elemento "+i+"-"+j);
             
                 }
             }
         }
+    }
+    
+    public boolean Revisar(){
+        boolean Gano = false;
+        int Suma = 0;
+        for (int i = 0; i < 3; i++) {
+            Suma = TABLERO[i][0].B+TABLERO[i][2].B;
+            if (Suma == 3 || Suma == 12 ) {
+                Gano = true;
+                break;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            Suma= TABLERO[0][i].B+TABLERO[2][i].B;
+             if (Suma == 3 || Suma == 12 ) {
+                Gano = true;
+                break;
+            }
+        }
+        Suma = TABLERO[0][2].B + TABLERO[1][1].B + TABLERO[2][0].B;
+        if (Suma == 3 || Suma == 12 ) {
+                Gano = true;
+        }
+        Suma = 0;
+        
+        for (int i = 0; i < 3; i++) {
+             Suma = TABLERO[i][i].B;
+        }
+        
+        if (Suma == 3 || Suma == 12 ) {
+                Gano = true;
+        }
+        return Gano;
     }
 }
