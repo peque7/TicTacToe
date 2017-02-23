@@ -54,7 +54,7 @@ public class Ventana extends javax.swing.JFrame implements  ActionListener{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 315, Short.MAX_VALUE)
+            .addGap(0, 349, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +127,7 @@ public class Ventana extends javax.swing.JFrame implements  ActionListener{
                     Tiro(TABLERO[i][j]);
                     if (Revisar()) {
                         JOptionPane.showMessageDialog(null, "HAS GANADO");
+                        //System.out.println("Elemento "+i+"-"+j);
                     }
                     Contador++;
                    //System.out.println("Elemento "+i+"-"+j);
@@ -140,14 +141,15 @@ public class Ventana extends javax.swing.JFrame implements  ActionListener{
         boolean Gano = false;
         int Suma = 0;
         for (int i = 0; i < 3; i++) {
-            Suma = TABLERO[i][0].B+TABLERO[i][2].B;
+            Suma = TABLERO[i][0].B+TABLERO[i][1].B+TABLERO[i][2].B;
+            //System.out.println(Suma+" - "+TABLERO[i][0].B+" - "+TABLERO[i][2].B);
             if (Suma == 3 || Suma == 12 ) {
                 Gano = true;
                 break;
             }
         }
         for (int i = 0; i < 3; i++) {
-            Suma= TABLERO[0][i].B+TABLERO[2][i].B;
+            Suma = TABLERO[0][i].B+TABLERO[i][1].B+TABLERO[2][i].B;
              if (Suma == 3 || Suma == 12 ) {
                 Gano = true;
                 break;
@@ -160,7 +162,7 @@ public class Ventana extends javax.swing.JFrame implements  ActionListener{
         Suma = 0;
         
         for (int i = 0; i < 3; i++) {
-             Suma = TABLERO[i][i].B;
+             Suma += TABLERO[i][i].B;
         }
         
         if (Suma == 3 || Suma == 12 ) {
